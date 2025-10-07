@@ -10,29 +10,45 @@
 <body>
 	
 	<div class="container">
-		<div>
-			<form>
-				<label>
-					<span>Hue Rotate</span>
-					<input id="hue" type="range" min="0" max="360" value="0" />
-				</label>
-				
-				<label>
-					<span>Blur</span>
-					<input id="blur" type="range" min="0" max="40" value="0" />
-				</label>
+		<div class="main-content">
+			<section class="form-section">
+				<h1>Image Editor</h1>
+				<form>
+					<div class="control-group">
+						<label for="hue">
+							<span>Hue Rotate</span>
+							<input id="hue" type="range" min="0" max="360" value="0" aria-label="Adjust hue rotation from 0 to 360 degrees" />
+						</label>
+					</div>
+					
+					<div class="control-group">
+						<label for="blur">
+							<span>Blur</span>
+							<input id="blur" type="range" min="0" max="40" value="0" aria-label="Adjust blur from 0 to 40 pixels" />
+						</label>
+					</div>
 
-				<label>
-					<span>Contrast</span>
-					<input id="contrast" type="range" min="0" max="400" value="50" />
-				</label>
+					<div class="control-group">
+						<label for="contrast">
+							<span>Contrast</span>
+							<input id="contrast" type="range" min="0" max="400" value="50" aria-label="Adjust contrast from 0 to 400 percent" />
+						</label>
+					</div>
 
-				<label>
-					<span>Saturation</span>
-					<input id="saturation" type="range" min="0" max="200" value="100" />
-				</label>
-			</form>
-			<img src="./dali.png" width="400" height="400"/>
+					<div class="control-group">
+						<label for="saturation">
+							<span>Saturation</span>
+							<input id="saturation" type="range" min="0" max="200" value="100" aria-label="Adjust saturation from 0 to 200 percent" />
+						</label>
+					</div>
+				</form>
+			</section>
+			
+			<section class="image-section">
+				<div class="image-container">
+					<img src="./dali.png" width="400" height="400" alt="Editable image of a Salvador Dali painting" />
+				</div>
+			</section>
 		</div>
 	</div>
 
