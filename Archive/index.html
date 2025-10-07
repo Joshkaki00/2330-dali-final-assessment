@@ -111,10 +111,26 @@
 
 	<script>
 		const img = document.querySelector('img')
+		const currentFiltersSpan = document.getElementById('current-filters')
 		let hue = 0
 		let blur = 0
 		let contrast = 50
 		let saturation = 100
+
+		// Function to update value displays and accessibility info
+		function updateValueDisplays() {
+			document.getElementById('hue-value').textContent = `${hue}°`
+			document.getElementById('blur-value').textContent = `${blur}px`
+			document.getElementById('contrast-value').textContent = `${contrast}%`
+			document.getElementById('saturation-value').textContent = `${saturation}%`
+			
+			// Update screen reader description
+			const filterDescription = `Hue ${hue} degrees, Blur ${blur} pixels, Contrast ${contrast}%, Saturation ${saturation}%`
+			currentFiltersSpan.textContent = filterDescription
+		}
+
+		// Initialize displays
+		updateValueDisplays()
 
 		document.body.addEventListener('input', (e) => {
 			switch(e.target.id) {
@@ -122,11 +138,11 @@
 					hue = parseInt(e.target.value)
 					break
 				
-					case 'blur':
+				case 'blur':
 					blur = parseInt(e.target.value)
 					break
 				
-					case 'contrast':
+				case 'contrast':
 					contrast = parseInt(e.target.value)
 					break
 
@@ -134,11 +150,25 @@
 					saturation = parseInt(e.target.value)
 					break
 				default:
-
+					return // Exit if not a filter control
 			}
 
-			console.log(hue, blur, saturation)
+			// Apply filters to image
 			img.style.filter = `saturate(${saturation}%) contrast(${contrast}%) hue-rotate(${hue}deg) blur(${blur}px)`
+			
+			// Update accessibility displays
+			updateValueDisplays()
+		})
+
+		// Add keyboard navigation support
+		document.addEventListener('keydown', (e) => {
+			if (e.target.type === 'range') {
+				// Announce changes for screen readers
+				setTimeout(() => {
+					const event = new Event('input', { bubbles: true })
+					e.target.dispatchEvent(event)
+				}, 100)
+			}
 		})
 	</script>
 </body>
