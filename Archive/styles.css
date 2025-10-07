@@ -266,7 +266,7 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 /* =============================================================================
-   TABLET STYLES (≤800px and up)
+   TABLET STYLES (481px to 800px)
    ============================================================================= */
 
 @media (min-width: 481px) and (max-width: 800px) {
