@@ -4,36 +4,109 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Final Assessment</title>
+	<title>Image Filter Editor - Final Assessment</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	
-	<div class="container">
-		<div>
-			<form>
-				<label>
-					<span>Hue Rotate</span>
-					<input id="hue" type="range" min="0" max="360" value="0" />
-				</label>
-				
-				<label>
-					<span>Blur</span>
-					<input id="blur" type="range" min="0" max="40" value="0" />
-				</label>
+	<main class="container">
+		<header>
+			<h1>Image Filter Editor</h1>
+			<p>Adjust the sliders below to apply real-time filters to the image</p>
+		</header>
+		
+		<div class="editor-layout">
+			<section class="controls-section" aria-label="Image filter controls">
+				<h2 class="visually-hidden">Filter Controls</h2>
+				<form role="group" aria-labelledby="controls-heading">
+					<div class="control-group">
+						<label for="hue">
+							<span class="label-text">Hue Rotate</span>
+							<input 
+								id="hue" 
+								type="range" 
+								min="0" 
+								max="360" 
+								value="0"
+								aria-describedby="hue-desc"
+								aria-label="Adjust hue rotation from 0 to 360 degrees"
+							/>
+							<span class="value-display" id="hue-value" aria-live="polite">0°</span>
+						</label>
+						<p id="hue-desc" class="control-description">Rotates the colors around the color wheel</p>
+					</div>
+					
+					<div class="control-group">
+						<label for="blur">
+							<span class="label-text">Blur</span>
+							<input 
+								id="blur" 
+								type="range" 
+								min="0" 
+								max="40" 
+								value="0"
+								aria-describedby="blur-desc"
+								aria-label="Adjust blur from 0 to 40 pixels"
+							/>
+							<span class="value-display" id="blur-value" aria-live="polite">0px</span>
+						</label>
+						<p id="blur-desc" class="control-description">Applies gaussian blur effect</p>
+					</div>
 
-				<label>
-					<span>Contrast</span>
-					<input id="contrast" type="range" min="0" max="400" value="50" />
-				</label>
+					<div class="control-group">
+						<label for="contrast">
+							<span class="label-text">Contrast</span>
+							<input 
+								id="contrast" 
+								type="range" 
+								min="0" 
+								max="400" 
+								value="50"
+								aria-describedby="contrast-desc"
+								aria-label="Adjust contrast from 0 to 400 percent"
+							/>
+							<span class="value-display" id="contrast-value" aria-live="polite">50%</span>
+						</label>
+						<p id="contrast-desc" class="control-description">Controls the difference between light and dark areas</p>
+					</div>
 
-				<label>
-					<span>Saturation</span>
-					<input id="saturation" type="range" min="0" max="200" value="100" />
-				</label>
-			</form>
-			<img src="./dali.png" width="400" height="400"/>
+					<div class="control-group">
+						<label for="saturation">
+							<span class="label-text">Saturation</span>
+							<input 
+								id="saturation" 
+								type="range" 
+								min="0" 
+								max="200" 
+								value="100"
+								aria-describedby="saturation-desc"
+								aria-label="Adjust saturation from 0 to 200 percent"
+							/>
+							<span class="value-display" id="saturation-value" aria-live="polite">100%</span>
+						</label>
+						<p id="saturation-desc" class="control-description">Controls the intensity of colors</p>
+					</div>
+				</form>
+			</section>
+			
+			<section class="image-section" aria-label="Preview image">
+				<h2 class="visually-hidden">Image Preview</h2>
+				<div class="image-container">
+					<img 
+						src="./dali.png" 
+						alt="Salvador Dali artwork being edited with filters"
+						width="400" 
+						height="400"
+						role="img"
+						aria-describedby="image-desc"
+					/>
+					<p id="image-desc" class="visually-hidden">
+						Preview of the filtered image. The current filters are: 
+						<span id="current-filters" aria-live="polite">No filters applied</span>
+					</p>
+				</div>
+			</section>
 		</div>
-	</div>
+	</main>
 
 
 	<script>
