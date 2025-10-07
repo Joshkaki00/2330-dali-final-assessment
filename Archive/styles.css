@@ -1,0 +1,463 @@
+/* =============================================================================
+   IMAGE FILTER EDITOR - RESPONSIVE STYLES
+   Mobile-first approach with progressive enhancement
+   ============================================================================= */
+
+/* CSS Custom Properties (CSS Variables) for maintainability */
+:root {
+  /* Colors */
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #64748b;
+  --background-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-light: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 0.75rem;  /* 12px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+  
+  /* Typography */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  
+  /* Layout */
+  --max-width: 1200px;
+  --image-size-mobile: min(90vw, 300px);
+  --image-size-tablet: 350px;
+  --image-size-desktop: 400px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.3s ease-out;
+}
+
+/* =============================================================================
+   RESET & BASE STYLES
+   ============================================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background-color);
+  font-size: var(--font-size-base);
+}
+
+/* Visually hidden content for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   MOBILE STYLES (BASE/DEFAULT)
+   Mobile-first: These styles apply to all screen sizes
+   ============================================================================= */
+
+.container {
+  min-height: 100vh;
+  padding: var(--spacing-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+header p {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Main layout - Mobile: vertical stack */
+.editor-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+/* =============================================================================
+   IMAGE SECTION - MOBILE
+   ============================================================================= */
+
+.image-section {
+  order: 1; /* Image appears first on mobile */
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  width: var(--image-size-mobile);
+  height: var(--image-size-mobile);
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-normal);
+}
+
+/* =============================================================================
+   CONTROLS SECTION - MOBILE
+   ============================================================================= */
+
+.controls-section {
+  order: 2; /* Controls appear second on mobile */
+  width: 100%;
+  max-width: 400px;
+}
+
+.control-group {
+  margin-bottom: var(--spacing-xl);
+  background: var(--surface-color);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+}
+
+.control-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Label styling - Mobile: centered labels above inputs */
+label {
+  display: block;
+  width: 100%;
+}
+
+.label-text {
+  display: block;
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+/* Range input styling */
+input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border-color);
+  outline: none;
+  margin: var(--spacing-sm) 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+/* Webkit slider track */
+input[type="range"]::-webkit-slider-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border-color);
+}
+
+/* Webkit slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-fast);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+/* Firefox slider track */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border-color);
+  border: none;
+}
+
+/* Firefox slider thumb */
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-fast);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+/* Value display */
+.value-display {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  color: var(--primary-color);
+  margin-top: var(--spacing-sm);
+}
+
+/* Control descriptions */
+.control-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: var(--spacing-sm);
+  font-style: italic;
+}
+
+/* =============================================================================
+   TABLET STYLES (≤800px and up)
+   ============================================================================= */
+
+@media (min-width: 481px) and (max-width: 800px) {
+  .container {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Image sizing for tablet */
+  .image-container img {
+    width: var(--image-size-tablet);
+    height: var(--image-size-tablet);
+  }
+  
+  /* Controls layout - horizontal labels */
+  .control-group {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  
+  .label-text {
+    flex: 0 0 120px; /* Fixed width for labels */
+    text-align: right;
+    margin-bottom: 0;
+    font-size: var(--font-size-base);
+  }
+  
+  input[type="range"] {
+    flex: 1;
+    max-width: 75%; /* Input takes ~75% of remaining space */
+    margin: 0;
+  }
+  
+  .value-display {
+    flex: 0 0 60px;
+    text-align: left;
+    margin-top: 0;
+    font-size: var(--font-size-base);
+  }
+  
+  .control-description {
+    margin-top: var(--spacing-md);
+    text-align: left;
+    margin-left: 120px; /* Align with input */
+  }
+}
+
+/* =============================================================================
+   DESKTOP STYLES (>800px)
+   ============================================================================= */
+
+@media (min-width: 801px) {
+  .container {
+    padding: var(--spacing-2xl);
+  }
+  
+  /* Desktop layout - side by side */
+  .editor-layout {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-2xl);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Controls on the left */
+  .controls-section {
+    order: 1;
+    flex: 0 0 400px;
+  }
+  
+  /* Image on the right */
+  .image-section {
+    order: 2;
+    flex: 0 0 400px;
+  }
+  
+  .image-container img {
+    width: var(--image-size-desktop);
+    height: var(--image-size-desktop);
+  }
+  
+  /* Desktop form styling */
+  .control-group {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+  
+  label {
+    display: block;
+  }
+  
+  .label-text {
+    text-align: right;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-base);
+  }
+  
+  input[type="range"] {
+    width: 100%;
+    margin: var(--spacing-sm) 0;
+  }
+  
+  .value-display {
+    text-align: right;
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-base);
+  }
+  
+  .control-description {
+    text-align: right;
+    margin-top: var(--spacing-sm);
+  }
+}
+
+/* =============================================================================
+   ANIMATIONS & INTERACTIONS
+   ============================================================================= */
+
+/* Smooth transitions for layout changes */
+.editor-layout,
+.control-group,
+.image-container img {
+  transition: var(--transition-normal);
+}
+
+/* Hover effects for interactive elements */
+.control-group:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+/* Loading states and micro-interactions */
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.2);
+}
+
+/* =============================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================================================= */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+    --text-secondary: #000000;
+  }
+  
+  .control-group {
+    border: 2px solid var(--border-color);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --background-color: #0f172a;
+    --surface-color: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+  }
+}
+
+/* Print styles */
+@media print {
+  .controls-section {
+    display: none;
+  }
+  
+  .image-section {
+    page-break-inside: avoid;
+  }
+}
