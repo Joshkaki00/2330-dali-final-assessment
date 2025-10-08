@@ -365,7 +365,7 @@ input[type="range"]::-moz-range-thumb:hover {
   }
   
   .label-text {
-    text-align: right;
+    text-align: left; /* Changed from right to left */
     margin-bottom: var(--spacing-sm);
     font-size: var(--font-size-base);
   }
@@ -376,13 +376,13 @@ input[type="range"]::-moz-range-thumb:hover {
   }
   
   .value-display {
-    text-align: right;
+    text-align: left; /* Changed from right to left for consistency */
     margin-top: var(--spacing-sm);
     font-size: var(--font-size-base);
   }
   
   .control-description {
-    text-align: right;
+    text-align: left; /* Changed from right to left for consistency */
     margin-top: var(--spacing-sm);
   }
 }
